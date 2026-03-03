@@ -10,12 +10,35 @@
     </style>
 </head>
 <body>
+    <div id="play-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; cursor: pointer; color: white; font-family: sans-serif; text-align: center;">
+        <div style="font-size: 64px; margin-bottom: 20px;">🏀</div>
+        <div style="font-size: 24px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Click to Play Basketball Stars</div>
+        <div style="margin-top: 10px; opacity: 0.6; font-size: 14px;">(Ensures game focus and audio)</div>
+    </div>
     <iframe 
-        src="https://66unblocked.github.io/basketball-stars/" 
         id="inner-game"
         allow="autoplay; fullscreen; pointer-lock; gamepad"
         scrolling="no"
-        style="width: 100%; height: 100%; border: none;"
+        style="width: 100%; height: 100%; border: none; display: none;"
     ></iframe>
+    <script>
+        const overlay = document.getElementById('play-overlay');
+        const iframe = document.getElementById('inner-game');
+        
+        overlay.onclick = function() {
+            overlay.style.display = 'none';
+            iframe.style.display = 'block';
+            // Using a reliable proxied source
+            iframe.src = "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydog/66@main/basketball-stars.xml";
+            iframe.focus();
+            
+            // Try to focus inner content
+            setTimeout(() => {
+                try {
+                    iframe.contentWindow.focus();
+                } catch(e) {}
+            }, 100);
+        };
+    </script>
 </body>
 </html>
