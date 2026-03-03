@@ -58,7 +58,14 @@
         <div class="error-message" id="error-msg">
             <h2 style="margin-top: 0;">Oops! Something went wrong.</h2>
             <p>The application failed to load. This might be due to a missing build file or a network issue.</p>
-            <p style="font-size: 14px; opacity: 0.8;">If you are seeing this on GitHub Pages, ensure you have built the project and are serving from the correct directory.</p>
+            <div style="font-size: 14px; opacity: 0.8; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                <strong>Common Fixes:</strong>
+                <ul style="text-align: left; margin-top: 10px;">
+                    <li>Ensure you have run <code>npm run build</code> before deploying.</li>
+                    <li>If on GitHub Pages, ensure you are serving the <strong>dist</strong> folder.</li>
+                    <li>Check the browser console (F12) for specific error messages.</li>
+                </ul>
+            </div>
         </div>
     </div>
     
@@ -66,14 +73,16 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <script>
-        // Simple timeout to show error if React doesn't mount within 5 seconds
+        // Increased timeout to 15 seconds to allow for slower connections/environments
         setTimeout(() => {
             const root = document.getElementById('root');
-            if (root && root.innerHTML.includes('Loading Game Portal...')) {
+            // Check if the loader is still present, meaning React hasn't replaced the content yet
+            if (root && root.querySelector('#loader')) {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('error-msg').style.display = 'block';
+                console.error('React failed to mount within 15 seconds. Check console for errors.');
             }
-        }, 5000);
+        }, 15000);
     </script>
 </body>
 </html>

@@ -58,7 +58,14 @@
         <div class="error-message" id="error-msg">
             <h2 style="margin-top: 0;">Oops! Something went wrong.</h2>
             <p>The application failed to load. This might be due to a missing build file or a network issue.</p>
-            <p style="font-size: 14px; opacity: 0.8;">If you are seeing this on GitHub Pages, ensure you have built the project and are serving from the correct directory.</p>
+            <div style="font-size: 14px; opacity: 0.8; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                <strong>Common Fixes:</strong>
+                <ul style="text-align: left; margin-top: 10px;">
+                    <li>Ensure you have run <code>npm run build</code> before deploying.</li>
+                    <li>If on GitHub Pages, ensure you are serving the <strong>dist</strong> folder.</li>
+                    <li>Check the browser console (F12) for specific error messages.</li>
+                </ul>
+            </div>
         </div>
     </div>
     
